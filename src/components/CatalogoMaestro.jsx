@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useCatalogo } from '../context/CatalogoContext';
+import { useCatalogo } from '../context/CatalogoContext.jsx';
 
 const MARCAS = ['Zenú', 'Doria', 'Pietrán', 'Noel', 'Sello Rojo', 'Jet'];
 const CATEGORIAS = ['Cárnicos', 'Pastas', 'Galletas', 'Cafés', 'Chocolates'];
