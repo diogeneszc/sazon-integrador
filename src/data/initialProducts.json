@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "sku": "PRD-001",
+    "nombre": "Hamburguesa Clásica",
+    "precio": 25000,
+    "stock": 15
+  },
+  {
+    "id": "2",
+    "sku": "PRD-002",
+    "nombre": "Papas Fritas Grandes",
+    "precio": 8000,
+    "stock": 30
+  }
+]
