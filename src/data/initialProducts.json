@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "sku": "PRD-001",
+    "nombre": "Galletas Noel Tradicional",
+    "marca": "Noel",
+    "categoria": "Galletas",
+    "presentacion": "300 g",
+    "precio": 4500,
+    "stock": 15
+  },
+  {
+    "id": "2",
+    "sku": "PRD-002",
+    "nombre": "Pasta Doria Espagueti",
+    "marca": "Doria",
+    "categoria": "Pastas",
+    "presentacion": "500 g",
+    "precio": 5300,
+    "stock": 30
+  },
+  {
+    "id": "3",
+    "sku": "PRD-003",
+    "nombre": "Pasta Doria Tornillo",
+    "marca": "Doria",
+    "categoria": "Pastas",
+    "presentacion": "500 g",
+    "precio": 5600,
+    "stock": 20
+  },
+  {
+    "id": "4",
+    "sku": "PRD-004",
+    "nombre": "Chocolate Jet",
+    "marca": "Jet",
+    "categoria": "Chocolates",
+    "presentacion": "35 g",
+    "precio": 2200,
+    "stock": 40
+  }
+]
