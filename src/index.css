@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-sazon-marfil: #F4F4E8;
   --color-sazon-cacao: #643B22;

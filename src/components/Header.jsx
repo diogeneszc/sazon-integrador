@@ -6,7 +6,7 @@ import Toast from './Toast'
 import ThemeToggle from './ThemeToggle'
 import Footer from './Footer'
 
-function Header({ children }) {
+function Header({ children, breadcrumbItems }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const toggleSidebar = () => {
@@ -49,7 +49,7 @@ function Header({ children }) {
     <>
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
       <TopBar onToggleSidebar={toggleSidebar} />
-      <Breadcrumb />
+      <Breadcrumb items={breadcrumbItems} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}

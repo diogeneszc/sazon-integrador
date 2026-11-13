@@ -1,0 +1,5 @@
+export { default as ReporteValoracion } from './ReporteValoracion'
+export { default as EstadisticasModeracion } from './EstadisticasModeracion'
+export { default as FiltrosReportes } from './FiltrosReportes'
+export { default as TablaReportes } from './TablaReportes'
+export { default as DetalleReporteModal } from './DetalleReporteModal'
