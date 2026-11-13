@@ -1,0 +1,176 @@
+/* ==========================================================================
+   MÓDULO RECETARIO Y CONTENIDO - HU 2.2.1
+   Prefijo obligatorio: .receta-detalle-container
+   ========================================================================== */
+
+.receta-detalle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  color: var(--sazon-texto, #3F4040);
+  font-family: 'Inter', sans-serif;
+}
+
+.dark .receta-detalle-container {
+  color: var(--sazon-marfil, #F4F4E8);
+}
+
+/* Superficies y tarjetas */
+.receta-detalle-card {
+  background-color: #ffffff;
+  border: 1px solid #E2E1D1;
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 20px -6px rgba(63, 64, 64, 0.06);
+}
+
+.dark .receta-detalle-card {
+  background-color: #133326;
+  border-color: rgba(102, 209, 73, 0.2);
+  box-shadow: 0 8px 25px -6px rgba(0, 0, 0, 0.35);
+}
+
+.receta-detalle-subcard {
+  background-color: #F8F8F0;
+  border: 1px solid #E6E5D6;
+  border-radius: 1rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.receta-detalle-subcard:hover {
+  transform: translateY(-2px);
+  border-color: #3D8E33;
+}
+
+.dark .receta-detalle-subcard {
+  background-color: #1B4332;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Insignias temáticas y de marcas Nutresa */
+.receta-detalle-badge-categoria {
+  background-color: #FBE9E2;
+  color: #C84B1D;
+  border: 1px solid #F3CBBF;
+}
+
+.dark .receta-detalle-badge-categoria {
+  background-color: rgba(230, 81, 0, 0.25);
+  color: #FFAB91;
+  border-color: rgba(230, 81, 0, 0.45);
+}
+
+.receta-detalle-badge-ranchera {
+  background-color: #D84315;
+  color: #ffffff;
+}
+
+.receta-detalle-badge-doria {
+  background-color: #2E7D32;
+  color: #ffffff;
+}
+
+.receta-detalle-badge-lacteos {
+  background-color: #643B22;
+  color: #ffffff;
+}
+
+/* Imagen Hero Principal y Overlays */
+.receta-detalle-hero-figure {
+  position: relative;
+  height: 27rem;
+  overflow: hidden;
+  border-radius: 1.25rem 1.25rem 0 0;
+  margin: 0;
+}
+
+.receta-detalle-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.receta-detalle-hero-figure:hover .receta-detalle-hero-img {
+  transform: scale(1.03);
+}
+
+.receta-detalle-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 36, 25, 0.92) 0%,
+    rgba(15, 36, 25, 0.38) 45%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+/* Gráfico Circular SVG de Balance Nutricional (Cero estilos inline) */
+.receta-detalle-donut-svg {
+  width: 6.75rem;
+  height: 6.75rem;
+  transform: rotate(-90deg);
+}
+
+.receta-detalle-donut-bg {
+  fill: none;
+  stroke: #E8E7D8;
+  stroke-width: 11;
+}
+
+.dark .receta-detalle-donut-bg {
+  stroke: #1B4332;
+}
+
+.receta-detalle-donut-carbos {
+  fill: none;
+  stroke: #215B33;
+  stroke-width: 11;
+  stroke-dasharray: 138 251.2;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+}
+
+.receta-detalle-donut-proteina {
+  fill: none;
+  stroke: #D84315;
+  stroke-width: 11;
+  stroke-dasharray: 62 251.2;
+  stroke-dashoffset: -142;
+  stroke-linecap: round;
+}
+
+.receta-detalle-donut-grasas {
+  fill: none;
+  stroke: #643B22;
+  stroke-width: 11;
+  stroke-dasharray: 45 251.2;
+  stroke-dashoffset: -206;
+  stroke-linecap: round;
+}
+
+.receta-detalle-dot-carbos {
+  background-color: #215B33;
+}
+
+.receta-detalle-dot-proteina {
+  background-color: #D84315;
+}
+
+.receta-detalle-dot-grasas {
+  background-color: #643B22;
+}
+
+/* Botones de Acción Principal */
+.receta-detalle-btn-primary {
+  background-color: #215B33;
+  color: #ffffff;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.receta-detalle-btn-primary:hover {
+  background-color: #114622;
+  transform: translateY(-1px);
+}
