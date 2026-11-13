@@ -1,7 +1,10 @@
+import { productoServicio } from './productoServicio';
+
 const RECETAS_REGISTROS = {
   128: {
     id: 128,
     codigoInterno: 'ID #RN-8492',
+    codigoRecetaVerificada: 'RECETA N° 204',
     categoria: 'PLATO FUERTE NUTRESA',
     migas: [
       { label: 'Inicio', icon: 'bi-house', active: false },
@@ -10,6 +13,8 @@ const RECETAS_REGISTROS = {
       { label: 'Pasta cremosa con Salchicha Ranchera', icon: 'bi-journal-richtext', active: true }
     ],
     titulo: 'Pasta cremosa con Salchicha Ranchera Nutresa',
+    subtituloIngredientes:
+      'Fettuccine en Salsa Rosada Rústica con Salchicha Ranchera dorada al sarmiento, albahaca fresca y queso curado.',
     resumen:
       'Un clásico reconfortante con la sazón y ahumado inconfundible de Ranchera y toque de albahaca fresca. Ideal para elevar la mesa cotidiana con técnicas profesionales de emulsión cremosa.',
     autor: {
@@ -19,6 +24,8 @@ const RECETAS_REGISTROS = {
     },
     metadatos: {
       tiempoTotal: '35 mins',
+      tiempoMiseEnPlace: '25 Minutos',
+      porcionesBase: 4,
       porcionesTexto: '4 personas',
       dificultad: 'Intermedia',
       energiaPorPorcion: '540 kcal',
@@ -40,6 +47,16 @@ const RECETAS_REGISTROS = {
         sellos: ['ZN', 'RC', 'DR'],
         texto: '+1.2k Chefs la cocinaron hoy'
       }
+    },
+    ingredienteEstrella: {
+      etiqueta: 'INGREDIENTE ESTRELLA',
+      nombre: 'Salchicha Ranchera Nutresa',
+      descripcion:
+        'Elaborada con cortes cárnicos seleccionados y un perfil de ahumado natural patentado. Aporta una textura firme y jugosa que infunde una emulsión aromática en la base láctea de la pasta sin saturar el paladar.',
+      aporteProteicoLabel: 'Aporte Proteico por Porción',
+      aporteProteicoValor: '14g (28% IDR)',
+      notaIzquierda: '0% Grasa Trans Añadida',
+      notaDerecha: '100% Ahumado de Leña Noble'
     },
     nutricion: {
       porcionReferencia: 'PORCIÓN 280G',
@@ -84,7 +101,16 @@ const RECETAS_REGISTROS = {
           notaCalidad: 'Emulsión sedosa artesanal'
         }
       ]
-    }
+    },
+    relacionesIngredientes: [
+      { idRelacion: 'rel-1', productoId: 501, cantidadBase: 300, unidad: 'g', preparacion: 'Cortada en medallones al sesgo' },
+      { idRelacion: 'rel-2', productoId: 502, cantidadBase: 400, unidad: 'g', preparacion: 'Trigo durum fortificado' },
+      { idRelacion: 'rel-3', productoId: 503, cantidadBase: 200, unidad: 'ml', preparacion: 'Base emulsionante para salsa suave' },
+      { idRelacion: 'rel-4', productoId: 504, cantidadBase: 50, unidad: 'g', preparacion: 'Rallado fino para terminar el plato' },
+      { idRelacion: 'rel-5', productoId: 505, cantidadBase: 2, unidad: 'dientes', preparacion: 'Macerado en pasta fina' },
+      { idRelacion: 'rel-6', productoId: 506, cantidadBase: 1, unidad: 'manojo', preparacion: 'Hojas seleccionadas enteras' },
+      { idRelacion: 'rel-7', productoId: 507, cantidadBase: 2, unidad: 'cdas', preparacion: 'Prensado en frío para salteado rápido' }
+    ]
   }
 };
 
@@ -99,7 +125,45 @@ export const recetaServicio = {
         } else {
           reject(new Error(`No se encontró la receta con ID ${id}`));
         }
-      }, 180);
+      }, 150);
     });
+  },
+
+  // HU 2.2.2: Comunicación cruzada segura con productoServicio
+  async obtenerIngredientesDeReceta(id) {
+    const receta = await this.buscarPorId(id);
+    const ingredientesHidratados = await Promise.all(
+      receta.relacionesIngredientes.map(async (rel) => {
+        const producto = await productoServicio.obtenerPorId(rel.productoId);
+        return {
+          id: rel.idRelacion,
+          productoId: rel.productoId,
+          nombre: producto.nombre,
+          marca: producto.marca,
+          claseMarca: producto.claseMarca,
+          icono: producto.icono,
+          claseIcono: producto.claseIcono,
+          enDespensa: producto.enDespensa,
+          cantidadBase: rel.cantidadBase,
+          unidad: rel.unidad,
+          preparacion: rel.preparacion
+        };
+      })
+    );
+
+    return {
+      recetaResumen: {
+        id: receta.id,
+        codigoRecetaVerificada: receta.codigoRecetaVerificada,
+        titulo: receta.titulo,
+        subtituloIngredientes: receta.subtituloIngredientes,
+        imagenPrincipal: receta.multimedia.imagenPrincipal,
+        dificultad: receta.metadatos.dificultad,
+        tiempoMiseEnPlace: receta.metadatos.tiempoMiseEnPlace,
+        porcionesBase: receta.metadatos.porcionesBase,
+        ingredienteEstrella: receta.ingredienteEstrella
+      },
+      ingredientes: ingredientesHidratados
+    };
   }
 };
