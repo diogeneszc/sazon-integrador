@@ -607,3 +607,60 @@ body, aside, section, article, button, input {
 .brand-showcase-card:hover img.bg-photo {
   transform: scale(1.06);
 }
+/* ===== Planificador · Lista de mercado (HU-CEL05-03) ===== */
+
+.planificador-lista-mercado {
+  color: var(--sazon-texto);
+}
+
+.dark .planificador-lista-mercado {
+  color: var(--sazon-marfil);
+}
+
+.planificador-item {
+  background-color: #ffffff;
+  border: 1px solid #DAD9C4;
+  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.dark .planificador-item {
+  background-color: var(--sazon-verdeNutresaCard);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.planificador-item:hover {
+  border-color: var(--sazon-verdeHoja);
+}
+
+.planificador-item-checkbox {
+  accent-color: var(--sazon-verdeHoja);
+}
+
+.dark .planificador-item-checkbox {
+  accent-color: var(--sazon-verdeNeon);
+}
+
+/* Producto ya comprado: la tarjeta se atenúa y se tiñe de verde suave */
+.planificador-item-comprado {
+  background-color: rgba(61, 142, 51, 0.1);
+  border-color: var(--sazon-verdeHoja);
+  opacity: 0.8;
+}
+
+.dark .planificador-item-comprado {
+  background-color: rgba(102, 209, 73, 0.12);
+  border-color: var(--sazon-verdeNeon);
+}
+
+/* Texto del producto comprado: tachado y en gris */
+.planificador-item-tachado {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--sazon-verdeHoja);
+  color: var(--sazon-texto2);
+}
+
+.dark .planificador-item-tachado {
+  text-decoration-color: var(--sazon-verdeNeon);
+  color: rgba(244, 244, 232, 0.65);
+}
